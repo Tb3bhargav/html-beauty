@@ -1,0 +1,19 @@
+{
+  "name": "aura-botanics-backend",
+  "version": "1.0.0",
+  "description": "AURA BOTANICS — backend for Neo-Herbs desk botanics",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "dotenv": "^16.4.5",
+    "compression": "^1.7.4",
+    "express-rate-limit": "^7.2.0"
+  }
+}

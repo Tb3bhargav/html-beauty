@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>AURA BOTANICS — Double-click Starter</title>
+<HTA:APPLICATION
+  APPLICATIONNAME="AuraBotanicsStarter"
+  BORDER="thin"
+  BORDERSTYLE="normal"
+  CAPTION="yes"
+  SHOWINTASKBAR="yes"
+  SINGLEINSTANCE="yes"
+  SYSMENU="yes"
+/>
+<style>
+  body { font-family: "Segoe UI", Arial, sans-serif; margin: 22px; background: #f4f6fb; color: #222; }
+  .card { background: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 20px; max-width: 580px; }
+  h1 { margin: 0 0 4px; font-size: 1.4rem; }
+  p.desc { color: #555; margin-top: 0; }
+  button { display: block; width: 100%; margin: 8px 0; padding: 11px; font-size: 1rem; border-radius: 8px; border: 1px solid #2d6a4f; background: #2d6a4f; color: #fff; cursor: pointer; }
+  button.ghost { background: #fff; color: #2d6a4f; }
+  #status { background: #f6f8fa; border-radius: 6px; padding: 8px; min-height: 1.4em; }
+  code { background: #f6f8fa; padding: 2px 6px; border-radius: 4px; }
+</style>
+<script language="VBScript">
+Option Explicit
+Dim shell, fso
+Set shell = CreateObject("WScript.Shell")
+Set fso = CreateObject("Scripting.FileSystemObject")
+
+Function UrlDecode(s)
+  Dim r, i, hx, ch
+  r = Replace(s, "+", " ")
+  i = InStr(r, "%")
+  Do While i > 0 And i + 2 <= Len(r)
+    hx = Mid(r, i + 1, 2)
+    On Error Resume Next
+    ch = Chr(CInt("&H" & hx))
+    If Err.Number = 0 Then r = Left(r, i - 1) & ch & Mid(r, i + 3)
+    On Error GoTo 0
+    i = InStr(i + 1, r, "%")
+  Loop
+  UrlDecode = r
+End Function
+
+Function AppDir()
+  Dim p
+  p = Replace(document.location.pathname, "/", "\")
+  If Left(p, 1) = "\" Then p = Mid(p, 2)
+  p = UrlDecode(p)
+  AppDir = fso.GetParentFolderName(p)
+End Function
+
+Sub SetStatus(t)
+  document.getElementById("status").innerText = t
+End Sub
+
+Sub StartServer()
+  Dim dir, cmd
+  dir = AppDir()
+  shell.CurrentDirectory = dir
+  SetStatus("Starting server: node server.js ...")
+  cmd = "cmd /k cd /d " & chr(34) & dir & chr(34) & " && node server.js"
+  shell.Run cmd, 1, False
+  SetStatus("Server window opened. Then click 'Open in Browser'.")
+End Sub
+
+Sub OpenBrowser()
+  SetStatus("Opening http://localhost:3000 ...")
+  shell.Run "cmd /c start " & chr(34) & chr(34) & " " & chr(34) & "http://localhost:3000" & chr(34), 0, False
+End Sub
+
+Sub OpenMainFile()
+  Dim dir
+  dir = AppDir()
+  SetStatus("Opening main file...")
+  shell.Run "cmd /c start " & chr(34) & chr(34) & " " & chr(34) & dir & "\index.html" & chr(34), 1, False
+End Sub
+</script>
+</head>
+<body>
+<div class="card">
+  <h1>AURA BOTANICS (html beauty)</h1>
+  <p class="desc">Desk botanics shop. Express + db.json backend (port 3000). Run <code>npm install</code> once first.</p>
+  <button onclick="StartServer()">1) Start Server (<code>node server.js</code>, port 3000)</button>
+  <button class="ghost" onclick="OpenBrowser()">2) Open in Browser (http://localhost:3000)</button>
+  <button class="ghost" onclick="OpenMainFile()">Open Main File (index.html)</button>
+  <p>Status: <span id="status">Ready. Click "Start Server".</span></p>
+  <p>Manual: open a terminal here and run <code>npm install</code> once, then <code>node server.js</code>.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AURA BOTANICS — NEO-HERBS | Desk Botanics for Digital Ritual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="/styles.css" as="style">
+<link rel="preload" href="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=1200&q=80" as="image" fetchpriority="high">
+<link rel="dns-prefetch" href="//images.unsplash.com">
+<link rel="dns-prefetch" href="//i.pravatar.cc">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>/* ponytail: perf patch - reduce blur on low-end, content-visibility for offscreen */
+@media (max-width:900px){.glow{filter:blur(60px)!important;opacity:0.18!important}}
+.products{content-visibility:auto;contain-intrinsic-size:800px}
+.bento{content-visibility:auto;contain-intrinsic-size:600px}
+.product-media img,.hero-img-wrap img{content-visibility:auto}
+</style>
+</head>
+<body>
+
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#">
+      <span class="logo-mark">◈</span>
+      AURA <span><em>BOTANICS</em></span>
+      <span style="font-weight:300; color:var(--muted); font-size:0.62rem; letter-spacing:0.14em; margin-left:6px; border-left:1px solid var(--border); padding-left:10px; text-transform:uppercase">Neo-Herbs</span>
+    </a>
+    <div class="nav-links">
+      <a href="#collection">Collection</a>
+      <a href="#ritual">Ritual</a>
+      <a href="#journal">Journal</a>
+    </div>
+    <div class="nav-cta">
+      <label class="nav-search desktop-only" aria-label="Search products">
+        <span>⌕</span>
+        <input id="navSearch" type="search" placeholder="Search botanics..." autocomplete="off">
+      </label>
+      <button class="user-pill" id="authBtn" onclick="openAuth()" style="display:none">Sign in</button>
+      <span class="user-pill" id="userPill" style="display:none; cursor:pointer" onclick="openAccount()"><span id="userName"></span> <small title="Sign out" style="opacity:0.6; cursor:pointer; margin-left:6px; border-left:1px solid var(--border); padding-left:8px" onclick="event.stopPropagation(); logout()">↦</small></span>
+      <div class="cart-pill" id="cartPill" onclick="openCart()" role="button" tabindex="0" aria-label="Open cart"><span class="cart-dot"></span> Cart <strong id="cartCount">0</strong></div>
+      <button class="btn-gold desktop-cta" onclick="openPrivateDrop()">Join Private Drop</button>
+      <button class="hamburger" id="hamburger" aria-label="menu">☰</button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <label class="nav-search" style="margin-bottom:8px"><span>⌕</span><input id="mobileSearch" type="search" placeholder="Search..." autocomplete="off"></label>
+  <a href="#collection" onclick="closeMenu()">Collection</a>
+  <a href="#ritual" onclick="closeMenu()">Ritual</a>
+  <a href="#journal" onclick="closeMenu()">Journal</a>
+  <a href="#" onclick="openPrivateDrop(); closeMenu()" style="color:var(--gold-light)">Join Private Drop →</a>
+  <a href="#" onclick="openAuth(); closeMenu()" id="mobileAuthLink" style="font-size:1rem; color:var(--emerald-light)">Sign in / Create account</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="reveal">
+        <span class="eyebrow"><i></i> CURATED FOR DIGITAL NOMADS • EST. 2024 • BERLIN — KYOTO</span>
+        <h1>PLANTS<br><span class="line-gold">WITH</span> <span class="line-outline">ATTITUDE.</span></h1>
+        <p class="hero-copy">Ultra-exclusive desk botanics for minimalist creators. Every specimen is obsidian-grown, ritual-potted, and shipped with a 30-day thrive guarantee. Not decor — presence.</p>
+        <div class="hero-actions">
+          <button class="btn-gold" onclick="document.querySelector('#collection').scrollIntoView({behavior:'smooth'})">Explore Collection — From €89 →</button>
+          <button class="btn-ghost" onclick="openLookbook()">View Lookbook</button>
+        </div>
+        <div class="hero-stats">
+          <div><div class="stat-num">4.9/5</div><div class="stat-label">2,847 ritual keepers</div></div>
+          <div><div class="stat-num">14 Days</div><div class="stat-label">Acclimation support</div></div>
+          <div><div class="stat-num">Carbon+</div><div class="stat-label">Climate positive pots</div></div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" style="transition-delay:.12s">
+        <div class="hero-img-wrap">
+          <img width="1200" height="900" src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=1200&q=80" alt="Minimalist desk setup with plants" loading="eager" fetchpriority="high" decoding="async">
+          <div class="floating-card card-b">
+            <span class="pill-live">Live inventory</span>
+            <span style="font-size:0.78rem; font-weight:600">· 12 left in obsidian</span>
+          </div>
+          <div class="floating-card card-a">
+            <div style="display:flex; gap:12px; align-items:center">
+              <div class="avatar-stack">
+                <span><img width="28" height="28" decoding="async" loading="lazy" src="https://i.pravatar.cc/100?img=33" style="width:100%;height:100%;object-fit:cover"></span>
+                <span><img width="28" height="28" decoding="async" loading="lazy" src="https://i.pravatar.cc/100?img=47" style="width:100%;height:100%;object-fit:cover"></span>
+                <span style="background:var(--gold); color:#0B0F0D">+2k</span>
+              </div>
+              <div>
+                <div class="mini-label">Trusted by creators at</div>
+                <div class="mini-strong">Linear • Framer • Raycast</div>
+              </div>
+            </div>
+            <div style="text-align:right">
+              <div class="mini-label">Starting at</div>
+              <div class="price-tag">€89 — €340</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="glow glow-3"></div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="ticker-dot"></span> Obsidian Ceramic</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Wabi-Sabi Grown</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Desk Ritual Approved</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Ships in 24H</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> 30-Day Thrive Guarantee</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Obsidian Ceramic</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Wabi-Sabi Grown</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Desk Ritual Approved</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> Ships in 24H</span>
+    <span class="ticker-item"><span class="ticker-dot"></span> 30-Day Thrive Guarantee</span>
+  </div>
+</div>
+
+<!-- COLLECTION -->
+<section class="section wrap" id="collection">
+  <div class="section-head reveal">
+    <div>
+      <div class="kicker">02 — The Collection</div>
+      <h2>Curated obsidian<br><em>editions for focus.</em></h2>
+    </div>
+    <p class="section-desc">Six archetypes. Each grown for 18 months in low-light resilience, potted in matte obsidian ceramic with hidden reservoir. Pick your energy.</p>
+  </div>
+
+  <div class="collection-toolbar reveal">
+    <div class="filter-row" id="filterRow" style="margin-bottom:0">
+      <button class="chip is-active" data-filter="all">All Botanics</button>
+      <button class="chip" data-filter="focus">Focus & Flow</button>
+      <button class="chip" data-filter="calm">Calm & Ground</button>
+      <button class="chip" data-filter="statement">Statement</button>
+    </div>
+    <label class="nav-search" style="display:flex"><span>⌕</span><input id="collectionSearch" type="search" placeholder="Filter via API — try 'velvet' or 'bonsai'" autocomplete="off"></label>
+  </div>
+  <div id="productsStatus" style="margin:12px 0 8px; font-size:0.78rem; color:var(--muted); min-height:1.2em"></div>
+  <div class="products reveal" id="productGrid">
+    <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+  </div>
+  <div id="productsEmpty" class="empty" style="display:none; margin-top:16px">No botanics match. Try another filter or clear search. <button class="btn-ghost" style="margin-left:8px" onclick="clearSearch()">Clear</button></div>
+</section>
+
+<!-- BENTO -->
+<section class="section wrap" id="journal">
+  <div class="section-head reveal">
+    <div>
+      <div class="kicker">03 — Desk Ritual</div>
+      <h2>Bento for your<br><em>creative nervous system.</em></h2>
+    </div>
+    <p class="section-desc">Not plant care tips — habitat design. Tested in Berlin lofts, Lisbon studios, Tokyo 6-tatami rooms.</p>
+  </div>
+
+  <div class="bento">
+    <div class="bento-card bento-1 reveal">
+      <div>
+        <div class="kicker">Micro-climate • Obsidian Tech</div>
+        <h3>Self-watering.<br>But make it ritual.</h3>
+        <p>Hidden reservoir + wicking cord = 14 days without touch. Matte ceramic stays cool, roots stay aired. You just notice it.</p>
+        <ul class="feature-list">
+          <li>14-day reservoir — leave for offsites</li>
+          <li>Breathable obsidian glaze, carbon-negative</li>
+          <li>QR care card → 45s video by grower</li>
+        </ul>
+      </div>
+      <div style="display:flex; gap:12px; margin-top:20px; flex-wrap:wrap">
+        <span class="chip" style="background:rgba(16,185,129,0.12); color:var(--emerald-light); border-color:rgba(16,185,129,0.2)">✓ No green thumb needed</span>
+        <span class="chip" style="background:rgba(212,175,55,0.12); color:var(--gold-light); border-color:rgba(212,175,55,0.2)">Edition 04 — 86 left</span>
+      </div>
+    </div>
+
+    <div class="bento-card bento-2 reveal" style="transition-delay:.08s; display:flex; flex-direction:column; justify-content:center">
+      <div class="kicker">In numbers</div>
+      <div class="big-number">+47%</div>
+      <p style="margin-top:8px">Self-reported focus increase after 21 days with desk botanics. <span style="color:var(--text)">(n=612, independent study 2025)</span></p>
+      <div style="display:flex; gap:8px; margin-top:18px">
+        <span style="flex:1; height:6px; border-radius:999px; background:var(--emerald)"></span>
+        <span style="flex:0.6; height:6px; border-radius:999px; background:rgba(255,255,255,0.12)"></span>
+        <span style="flex:0.3; height:6px; border-radius:999px; background:rgba(255,255,255,0.06)"></span>
+      </div>
+      <div style="display:flex; justify-content:space-between; margin-top:8px; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted)">
+        <span>With botanics</span><span>Without</span>
+      </div>
+    </div>
+
+    <div class="bento-card bento-3 reveal" style="transition-delay:.04s">
+      <div class="kicker">Care is 30 seconds</div>
+      <h3 style="font-size:1.28rem">Water. Mist.<br>Rotate.</h3>
+      <div class="care-grid">
+        <div class="care-item"><strong>💧 1×</strong><span>per 10d</span></div>
+        <div class="care-item"><strong>🌫️ 2×</strong><span>mist / week</span></div>
+        <div class="care-item"><strong>↻ 90°</strong><span>rotate / week</span></div>
+      </div>
+      <p style="margin-top:14px; font-size:0.82rem">We notify you. One tap snoozes. Your plant won't guilt-trip.</p>
+    </div>
+
+    <div class="bento-card bento-4 reveal" style="transition-delay:.1s">
+      <div>
+        <div class="kicker">Journal • Issue 04</div>
+        <h3 style="font-size:1.38rem">How to build a desk shrine that doesn't try too hard.</h3>
+        <p>Three objects, one living thing, zero clutter. The Gen-Z altar for deep work.</p>
+        <button class="btn-ghost" style="margin-top:16px; width:fit-content" onclick="openJournal()">Read — 4 min →</button>
+      </div>
+      <div class="journal-img">
+        <img width="800" decoding="async" src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80" alt="Journal plant styling" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RITUAL -->
+<section class="section wrap" id="ritual">
+  <div class="ritual reveal">
+    <div class="ritual-media">
+      <img width="900" decoding="async" src="https://images.unsplash.com/photo-1446071103084-c257b5f70672?auto=format&fit=crop&w=900&q=80" alt="Plant ritual watering" loading="lazy">
+      <div class="floating-card" style="bottom:16px; left:16px; right:16px; justify-content:space-between; padding:12px 14px">
+        <div>
+          <div class="mini-label">Unboxing to thriving</div>
+          <div class="mini-strong">4 minutes • No soil spill</div>
+        </div>
+        <button class="btn-gold" style="padding:8px 14px; font-size:0.78rem" onclick="openVideo()">▶ Watch</button>
+      </div>
+    </div>
+    <div>
+      <div class="kicker">04 — The Ritual</div>
+      <h2 style="margin:10px 0 8px">Arrives ready.<br><em>Stays effortless.</em></h2>
+      <p style="color:var(--muted); font-weight:300; line-height:1.7">We don't ship plants. We ship acclimated companions. 18 months greenhouse, 14 days acclimation in obsidian. You unbox calm.</p>
+      <div class="steps" style="margin-top:18px">
+        <div class="step active">
+          <div class="step-num">01</div>
+          <div><h4>Unbox & Place</h4><p>Pre-watered reservoir. Peel, place near indirect light. No repot for 12 months.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div><h4>Scan → Thrive Guide</h4><p>QR on pot opens your plant's birth video, exact light & humidity for your city.</p></div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div><h4>Forget (we remind)</h4><p>Push reminder in 10 days. One tap confirms. Miss it? Reservoir has you for 4 more.</p></div>
+        </div>
+      </div>
+      <div style="display:flex; gap:10px; margin-top:20px; flex-wrap:wrap">
+        <button class="btn-gold" onclick="openProductByName('Monstera Obsidian')">Get Starter Set — €229 →</button>
+        <span class="cart-pill" style="border-style:dashed; cursor:default">30-day thrive guarantee • Free returns</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="section wrap">
+  <div class="newsletter reveal">
+    <div style="position:relative; z-index:1">
+      <div class="kicker" style="color:var(--emerald-light)">Private Drop • No spam, just drops</div>
+      <h2 style="margin-top:10px">First pick.<br><em style="color:var(--gold-light)">Before Instagram.</em></h2>
+      <p style="color:var(--muted); margin-top:10px; font-weight:300; line-height:1.7; max-width:520px">Rare editions drop to list first — 48h before public. Plus desk-shrine prompts, no algae advice.</p>
+      <form class="field" id="newsletterForm" onsubmit="handleNewsletter(event)">
+        <input type="email" name="email" placeholder="your@email — for the next obsidian drop" required aria-label="email">
+        <button type="submit" class="btn-gold" style="white-space:nowrap" id="newsletterBtn">Claim Access →</button>
+      </form>
+      <div class="n-meta">
+        <span>2,847 creators inside</span>
+        <span>Unsubscribe anytime</span>
+        <span>No spam — 1× month</span>
+      </div>
+    </div>
+    <div style="position:relative; z-index:1; display:flex; flex-direction:column; gap:14px">
+      <div style="display:flex; gap:12px; align-items:center; background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:16px; padding:14px">
+        <img width="200" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=200&q=80" style="width:64px;height:64px;border-radius:12px; flex-shrink:0">
+        <div>
+          <div style="font-weight:600; font-size:0.95rem">Next: Phantom Philodendron</div>
+          <div style="font-size:0.82rem; color:var(--muted)">18 leaves • Drops Nov 12 • List gets -20%</div>
+        </div>
+        <span style="margin-left:auto; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; background:var(--gold); color:#0B0F0D; padding:6px 10px; border-radius:999px; font-weight:700">Preview</span>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px">
+        <div style="background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:16px; padding:16px; text-align:center">
+          <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:1.4rem">★ 4.9</div>
+          <div style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted)">Avg rating</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.04); border:1px solid var(--border); border-radius:16px; padding:16px; text-align:center">
+          <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:1.4rem">24H</div>
+          <div style="font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted)">Dispatch</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="margin-bottom:12px"><span class="logo-mark">◈</span> AURA BOTANICS <span style="font-weight:300; color:var(--muted); font-size:0.62rem; letter-spacing:0.14em; margin-left:6px; text-transform:uppercase">Neo-Herbs</span></div>
+        <p style="font-size:0.88rem; line-height:1.7; max-width:320px">Desk botanics for digital ritual. Grown in Berlin, potted in obsidian, shipped climate-positive. Minimal by design, alive by nature.</p>
+        <div class="social" style="margin-top:16px">
+          <a href="#" aria-label="instagram" onclick="handleSocial('instagram'); return false;">◎</a>
+          <a href="#" aria-label="tiktok" onclick="handleSocial('tiktok'); return false;">♪</a>
+          <a href="#" aria-label="are.na" onclick="handleSocial('arena'); return false;">◐</a>
+        </div>
+      </div>
+      <div>
+        <h5>Atelier</h5>
+        <a onclick="openFooterModal('collection')">Collection</a>
+        <a onclick="openFooterModal('ritual')">Ritual & Care</a>
+        <a onclick="openFooterModal('obsidian')">Obsidian Pots</a>
+        <a onclick="openJournal()">Journal</a>
+      </div>
+      <div>
+        <h5>Support</h5>
+        <a onclick="openFooterModal('guarantee')">Thrive Guarantee</a>
+        <a onclick="openFooterModal('shipping')">Shipping — 24H</a>
+        <a onclick="openFooterModal('returns')">Returns</a>
+        <a onclick="openFooterModal('contact')">Contact Concierge</a>
+      </div>
+      <div>
+        <h5>Berlin Studio</h5>
+        <p style="font-size:0.88rem; line-height:1.7">Rosenthaler Str. 72<br>10119 Berlin — by appointment<br><br><span style="color:var(--text)">hello@aurabotanics.co</span><br>+49 30 2888 4720</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 AURA BOTANICS GmbH — Obsidian grown. All rights reserved. <span style="color:var(--muted-2)">•</span> <a onclick="openFooterModal('privacy')" style="text-decoration:underline; text-underline-offset:3px; cursor:pointer">Privacy</a> <span style="color:var(--muted-2)">•</span> <a onclick="openFooterModal('imprint')" style="text-decoration:underline; text-underline-offset:3px; cursor:pointer">Imprint</a></span>
+      <span style="display:flex; gap:8px; align-items:center">Crafted with <span style="color:var(--emerald)">●</span> for minimalists • <span style="border:1px solid var(--border); padding:4px 8px; border-radius:999px; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase">Carbon+ Shipping</span></span>
+    </div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast" role="alert" aria-live="assertive"><i>✓</i> <span id="toastMsg">Added to cart</span></div>
+
+<!-- CART DRAWER -->
+<div class="overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="drawer" id="cartDrawer" aria-hidden="true">
+  <div class="drawer-head">
+    <h3>Your ritual <span id="cartDrawerCount" style="color:var(--muted); font-weight:400; font-size:0.9rem"></span></h3>
+    <button class="modal-close" style="position:static" onclick="closeCart()">✕</button>
+  </div>
+  <div class="drawer-body" id="cartBody">
+    <div class="empty">Loading cart…</div>
+  </div>
+  <div class="drawer-foot" id="cartFoot">
+    <!-- totals injected -->
+  </div>
+</div>
+
+<!-- GENERIC MODAL -->
+<div class="modal-overlay" id="genericModal" onclick="handleOverlayClick(event,'genericModal')">
+  <div class="modal modal-md" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal('genericModal')">✕</button>
+    <div class="modal-pad" id="genericModalContent"></div>
+  </div>
+</div>
+
+<!-- PRODUCT DETAIL MODAL -->
+<div class="modal-overlay" id="productModal" onclick="handleOverlayClick(event,'productModal')">
+  <div class="modal modal-lg" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal('productModal')">✕</button>
+    <div class="modal-pad" id="productModalContent"></div>
+  </div>
+</div>
+
+<!-- LOOKBOOK MODAL -->
+<div class="modal-overlay" id="lookbookModal" onclick="handleOverlayClick(event,'lookbookModal')">
+  <div class="modal modal-xl" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal('lookbookModal')">✕</button>
+    <div class="modal-pad">
+      <div class="kicker">Lookbook — Edition 04 • Obsidian</div>
+      <h2 style="margin:10px 0 8px">The obsidian<br><em>desk shrine — 2026</em></h2>
+      <p style="color:var(--muted)">A 12-page PDF zine. Flip below or download. Printed on recycled washi, photographed in Berlin lofts.</p>
+      <div style="display:flex; gap:10px; margin-top:14px; flex-wrap:wrap">
+        <a class="btn-gold" href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" target="_blank" rel="noopener">Open PDF →</a>
+        <button class="btn-ghost" onclick="toast('Lookbook copied: dummy.pdf link')">Copy link</button>
+      </div>
+      <div style="margin-top:18px; border:1px solid var(--border); border-radius:16px; overflow:hidden; background:var(--surface-2); height:420px">
+        <iframe src="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" title="Lookbook PDF" style="width:100%;height:100%; border:0; background:white"></iframe>
+      </div>
+      <div class="lookbook-pages" id="lookbookProducts">
+        <!-- injected via JS from productsCache -->
+      </div>
+      <p style="margin-top:12px; font-size:0.78rem; color:var(--muted)">If the PDF doesn't load (offline demo), the product showcase below is the real lookbook content.</p>
+    </div>
+  </div>
+</div>
+
+<!-- JOURNAL MODAL -->
+<div class="modal-overlay" id="journalModal" onclick="handleOverlayClick(event,'journalModal')">
+  <div class="modal modal-lg" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal('journalModal')">✕</button>
+    <div class="modal-pad" style="display:grid; gap:18px">
+      <div class="kicker">Journal • Issue 04 • 4 min</div>
+      <h2>How to build a desk shrine<br><em>that doesn't try too hard.</em></h2>
+      <img width="1100" decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1100&q=80" style="border-radius:16px; border:1px solid var(--border); width:100%; aspect-ratio:16/9; object-fit:cover">
+      <div style="display:flex; gap:12px; align-items:center; color:var(--muted); font-size:0.82rem"><span>By AURA Studio — Berlin</span><span>•</span><span>Nov 2025</span><span>•</span><span style="border:1px solid var(--border); padding:4px 8px; border-radius:999px">Ritual</span></div>
+      <div style="display:grid; gap:14px; line-height:1.8; color:var(--muted)">
+        <p style="color:var(--text); font-weight:500; font-size:1.05rem">Three objects, one living thing, zero clutter. The Gen-Z altar for deep work.</p>
+        <p>We tested 47 desks in Berlin, Lisbon and Kyoto. The best ones share a rule: <strong style="color:var(--text)">3 + 1</strong>. Three inanimate anchors (lamp, notebook, stone) and one breathing companion. The plant is the timer — you notice it when you drift, you breathe when it moves.</p>
+        <h3 style="font-family:'Syne',sans-serif; color:var(--text); margin-top:8px">1. The anchor object</h3>
+        <p>Pick something with weight. A stone, a brass weight, a ceramic. It holds your desk down. Our obsidian pot is already the anchor — it doesn't need help.</p>
+        <h3 style="font-family:'Syne',sans-serif; color:var(--text)">2. The light line</h3>
+        <p>Place your botanical at the edge of your monitor glare, not in direct sun. Low-light resilience is built in. 45cm Monstera or 32cm Bonsai both throw a shadow that moves — a peripheral reminder to blink.</p>
+        <h3 style="font-family:'Syne',sans-serif; color:var(--text)">3. The 90° ritual</h3>
+        <p>Every Monday rotate the pot 90°. Not for the plant — for you. It marks the week. We send a push — one tap snoozes.</p>
+        <p style="padding:14px; background:rgba(212,175,55,0.08); border:1px solid rgba(212,175,55,0.18); border-radius:14px; color:var(--gold-light)"><strong>TL;DR</strong> — Start with Velvet Calathea if you stare at screens after midnight. Monstera if you need presence on calls. Bonsai if you want a timer.</p>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap">
+        <button class="btn-gold" onclick="closeModal('journalModal'); document.querySelector('#collection').scrollIntoView({behavior:'smooth'})">Shop the shrine →</button>
+        <button class="btn-ghost" onclick="toast('Article link copied')">Copy link</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEO MODAL -->
+<div class="modal-overlay" id="videoModal" onclick="handleOverlayClick(event,'videoModal')">
+  <div class="modal modal-lg" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeVideo()">✕</button>
+    <div class="modal-pad">
+      <div class="kicker">Ritual film • 01:42</div>
+      <h2 style="margin:8px 0">Unbox to thriving.<br><em>in 4 minutes.</em></h2>
+      <div class="video-wrap">
+        <video id="ritualVideo" controls poster="https://images.unsplash.com/photo-1446071103084-c257b5f70672?auto=format&fit=crop&w=1200&q=80" preload="metadata">
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+          Your browser does not support video.
+        </video>
+      </div>
+      <p style="color:var(--muted); margin-top:12px; font-size:0.88rem">No soil spill. Pre-watered reservoir. Peel, place, scan QR. Filmed in our Berlin greenhouse. Sound on — the wicking cord is oddly satisfying.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PRIVATE DROP MODAL -->
+<div class="modal-overlay" id="privateDropModal" onclick="handleOverlayClick(event,'privateDropModal')">
+  <div class="modal modal-sm" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal('privateDropModal')">✕</button>
+    <div class="modal-pad">
+      <div class="kicker">Private Drop • 2,847 inside</div>
+      <h2 style="margin:10px 0 6px">Join the<br><em>private drop.</em></h2>
+      <p style="color:var(--muted); font-size:0.92rem">Rare editions 48h before public. Next: Phantom Philodendron — Nov 12, −20% for list.</p>
+      <form class="form-grid" style="margin-top:18px" onsubmit="handlePrivateDrop(event)">
+        <input type="email" name="email" placeholder="your@email" required aria-label="private drop email">
+        <button type="submit" class="btn-gold" id="privateDropBtn">Join Private Drop →</button>
+        <span style="font-size:0.72rem; color:var(--muted)">By joining you agree to 1 email/month. Unsubscribe anytime. No spam.</span>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
+<div class="modal-overlay" id="authModal" onclick="handleOverlayClick(event,'authModal')">
+  <div class="modal modal-sm" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal('authModal')">✕</button>
+    <div class="modal-pad">
+      <div class="kicker">AURA ID • Cart & wishlist sync</div>
+      <h2 id="authTitle" style="margin:8px 0 4px">Welcome back</h2>
+      <p style="color:var(--muted); font-size:0.88rem" id="authSub">Sign in to sync cart with backend (GET /api/cart, POST /api/cart).</p>
+      <div class="auth-tabs">
+        <button id="tabLogin" class="active" onclick="setAuthTab('login')">Log in</button>
+        <button id="tabRegister" onclick="setAuthTab('register')">Create account</button>
+      </div>
+      <form class="form-grid" id="authForm" onsubmit="handleAuth(event)">
+        <input type="text" name="name" id="authName" placeholder="Name (for register)" style="display:none">
+        <input type="email" name="email" placeholder="you@email.com" required>
+        <input type="password" name="password" placeholder="Password (min 6)" required minlength="6">
+        <button type="submit" class="btn-gold" id="authSubmit">Log in →</button>
+        <span style="font-size:0.72rem; color:var(--muted); text-align:center" id="authHint">Guest cart stays in localStorage; login merges to server.</span>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ACCOUNT MODAL -->
+<div class="modal-overlay" id="accountModal" onclick="handleOverlayClick(event,'accountModal')">
+  <div class="modal modal-lg" onclick="event.stopPropagation()" style="display:flex; flex-direction:column; max-height:92vh">
+    <button class="modal-close" onclick="closeModal('accountModal')">✕</button>
+    <div class="modal-pad" style="padding-bottom:14px">
+      <div class="kicker">AURA ID • Account settings</div>
+      <h2 style="margin:8px 0 4px">Your account</h2>
+      <p style="color:var(--muted); font-size:0.88rem">Manage profile, addresses, orders, security & wishlist — synced via <code style="background:rgba(255,255,255,0.06); padding:2px 6px; border-radius:6px; font-size:0.78rem">/api/auth/*</code></p>
+      <div class="account-tabs" id="accountTabs">
+        <button class="account-tab active" data-tab="profile" onclick="switchAccountTab('profile')">Profile</button>
+        <button class="account-tab" data-tab="addresses" onclick="switchAccountTab('addresses')">Addresses</button>
+        <button class="account-tab" data-tab="orders" onclick="switchAccountTab('orders')">Orders</button>
+        <button class="account-tab" data-tab="security" onclick="switchAccountTab('security')">Security</button>
+        <button class="account-tab" data-tab="wishlist" onclick="switchAccountTab('wishlist')">Wishlist</button>
+      </div>
+    </div>
+    <div style="flex:1; overflow:auto; padding:0 28px 28px">
+      <!-- PROFILE -->
+      <div class="account-section active" id="accProfile">
+        <div class="account-card" style="display:flex; gap:16px; align-items:center; margin-bottom:14px">
+          <div class="avatar-lg" id="accAvatar">A</div>
+          <div style="flex:1; min-width:0">
+            <div style="font-weight:700" id="accProfileName">—</div>
+            <div style="font-size:0.82rem; color:var(--muted); word-break:break-all" id="accProfileEmail">—</div>
+            <div style="font-size:0.72rem; color:var(--muted); margin-top:4px" id="accMemberSince">Member since —</div>
+          </div>
+          <span id="accProfileId" style="font-size:0.62rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); border:1px solid var(--border); padding:6px 10px; border-radius:999px; max-width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap"></span>
+        </div>
+        <form class="form-grid" onsubmit="handleProfileSave(event)">
+          <div class="field-row">
+            <label style="display:grid; gap:6px"><span style="font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted)">Name</span><input id="accName" name="name" required placeholder="Your name"></label>
+            <label style="display:grid; gap:6px"><span style="font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted)">Email</span><input id="accEmail" name="email" type="email" required placeholder="you@email.com"></label>
+          </div>
+          <button type="submit" class="btn-gold" id="accProfileBtn" style="width:fit-content">Save profile →</button>
+          <span style="font-size:0.72rem; color:var(--muted)">Updates <code style="background:rgba(255,255,255,0.06); padding:1px 5px; border-radius:6px">PUT /api/auth/profile</code>. Email must stay unique.</span>
+        </form>
+      </div>
+      <!-- ADDRESSES -->
+      <div class="account-section" id="accAddresses">
+        <div id="addrList" style="display:grid; gap:10px"></div>
+        <div class="account-card" style="margin-top:14px">
+          <div style="font-weight:700; margin-bottom:10px" id="addrFormTitle">Add new address</div>
+          <form class="form-grid" onsubmit="handleAddressSubmit(event)">
+            <div class="field-row">
+              <input id="addrLabel" placeholder="Label (Home, Studio…)" maxlength="24">
+              <input id="addrStreet" placeholder="Street *" required>
+            </div>
+            <div class="field-row">
+              <input id="addrCity" placeholder="City *" required>
+              <input id="addrZip" placeholder="ZIP / Postal">
+            </div>
+            <input id="addrCountry" placeholder="Country (DE, FR…)" >
+            <div style="display:flex; gap:8px; flex-wrap:wrap">
+              <button type="submit" class="btn-gold" id="addrSubmitBtn">Add address →</button>
+              <button type="button" class="btn-ghost" id="addrCancelBtn" style="display:none" onclick="cancelEditAddr()">Cancel</button>
+            </div>
+            <span style="font-size:0.72rem; color:var(--muted)">Requires <code style="background:rgba(255,255,255,0.06); padding:1px 5px; border-radius:6px">street + city</code> — synced to <code style="background:rgba(255,255,255,0.06); padding:1px 5px; border-radius:6px">POST /api/auth/addresses</code></span>
+          </form>
+        </div>
+      </div>
+      <!-- ORDERS -->
+      <div class="account-section" id="accOrders">
+        <div id="ordersList" style="display:grid; gap:12px"></div>
+        <div id="orderDetail" style="display:none; margin-top:14px" class="account-card"></div>
+      </div>
+      <!-- SECURITY -->
+      <div class="account-section" id="accSecurity">
+        <form class="form-grid" onsubmit="handlePasswordChange(event)" style="max-width:460px">
+          <input id="curPw" type="password" placeholder="Current password *" required>
+          <input id="newPw" type="password" placeholder="New password (min 6) *" required minlength="6">
+          <input id="confirmPw" type="password" placeholder="Confirm new password *" required minlength="6">
+          <button type="submit" class="btn-gold" id="pwBtn" style="width:fit-content">Update password →</button>
+          <span style="font-size:0.72rem; color:var(--muted)">Calls <code style="background:rgba(255,255,255,0.06); padding:1px 5px; border-radius:6px">PUT /api/auth/password</code> — 6+ chars, must match.</span>
+        </form>
+        <div class="account-card" style="margin-top:16px; display:grid; gap:10px">
+          <div style="font-weight:700">Session</div>
+          <p style="font-size:0.82rem; color:var(--muted); line-height:1.6">JWT stored as <code style="background:rgba(255,255,255,0.06); padding:2px 6px; border-radius:6px">aura_token</code> — expires in 7 days (server: <code style="background:rgba(255,255,255,0.06); padding:1px 5px; border-radius:6px">JWT_SECRET</code>). Keep your token private.</p>
+          <div style="display:flex; gap:8px; flex-wrap:wrap">
+            <button class="btn-ghost" onclick="logoutElsewhere()">Log out elsewhere (clear token)</button>
+            <button class="btn-ghost" style="border-style:dashed" onclick="logout()">Sign out everywhere</button>
+          </div>
+        </div>
+      </div>
+      <!-- WISHLIST -->
+      <div class="account-section" id="accWishlist">
+        <div id="accWishlistGrid" style="display:grid; gap:10px"></div>
+      </div>
+    </div>
+    <div style="padding:14px 28px; border-top:1px solid var(--border); display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; background:rgba(0,0,0,0.18); border-radius:0 0 28px 28px">
+      <span style="font-size:0.72rem; color:var(--muted); align-self:center">Signed sync • <span id="accSyncEmail" style="color:var(--text)"></span></span>
+      <div style="display:flex; gap:8px">
+        <button class="btn-ghost" onclick="closeModal('accountModal')">Close</button>
+        <button class="btn-ghost" onclick="logout()" style="color:#fecaca; border-color:rgba(239,68,68,0.25)">Sign out ↦</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ORDER CONFIRM MODAL -->
+<div class="modal-overlay" id="orderConfirmModal" onclick="handleOverlayClick(event,'orderConfirmModal')">
+  <div class="modal modal-md" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal('orderConfirmModal')">✕</button>
+    <div class="modal-pad" id="orderConfirmContent"></div>
+  </div>
+</div>
+
+<script src="/app.js" defer></script>
+</body>
+</html>
